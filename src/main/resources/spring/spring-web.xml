@@ -32,4 +32,7 @@
 	 
 	 <!-- 4.扫描web相关的bean -->
 	 <context:component-scan base-package="com.gaozhd.ssm.controller" />
+
+	<!-- 自定义的bean，用于管理Spring应用上下文的资源（主要是bean对象），是Spring应用上下文资源的持有者。 -->
+	<bean class="com.gaozhd.ssm.ApplicationContextHolder" />
 </beans>

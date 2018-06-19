@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.DispatcherServlet;
 
 @Controller
 @RequestMapping("/user")
@@ -18,7 +19,7 @@ public class SysUserController {
             RequestMethod.POST })
     @ResponseBody
     public SysUser getOneUser() throws Exception {
-
+        DispatcherServlet a ;
         return userService.findSysUserByID(1);
     }
 }

@@ -19,7 +19,6 @@ public class SysUserController {
             RequestMethod.POST })
     @ResponseBody
     public SysUser getOneUser() throws Exception {
-        DispatcherServlet a ;
         return userService.findSysUserByID(1);
     }
 }

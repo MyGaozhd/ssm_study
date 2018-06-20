@@ -1,4 +1,4 @@
-package com.gaozhd.ssm.controller;
+package com.gaozhd.ssm.controller.test;
 
 import com.gaozhd.ssm.common.util.json.JsonUtil;
 import com.gaozhd.ssm.entity.SysUser;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/test")
-public class ModelTestController {
+@RequestMapping("/test1")
+public class Test1 {
 
     @ModelAttribute
     public void userModel(String username, String code, Model model) {

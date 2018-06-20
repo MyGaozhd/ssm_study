@@ -2,26 +2,60 @@ package com.gaozhd.ssm.controller.test;
 
 import com.gaozhd.ssm.entity.SysUser;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/test2")
 public class Test2 {
 
-    @RequestMapping(value = {"/test", "/test1", ""}, method = {RequestMethod.GET,
+    @RequestMapping(value = {"/method1", ""}, method = {RequestMethod.GET,
             RequestMethod.POST})
     @ResponseBody
-    public String test1() throws Exception {
-        return "test1";
+    public SysUser method1(@RequestParam("name") String name, @RequestParam("code") String code) throws Exception {
+        SysUser user = new SysUser();
+        user.setCode(code);
+        user.setName(name);
+        return user;
     }
 
-    @RequestMapping(value = "test2", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = {"/method2"}, method = {RequestMethod.GET,
+            RequestMethod.POST})
     @ResponseBody
-    public SysUser test2() throws Exception {
-        SysUser sysUser = new SysUser();
-        sysUser.setName("test2");
-        return sysUser;
+    public SysUser method2(@RequestParam(value = "name", required = false, defaultValue = "gao") String name, @RequestParam("code") String code) throws Exception {
+        SysUser user = new SysUser();
+        user.setCode(code);
+        user.setName(name);
+        return user;
+    }
+
+    @RequestMapping(value = {"/method3/{name}/{code}"}, method = {RequestMethod.GET,
+            RequestMethod.POST})
+    @ResponseBody
+    public SysUser method3(@PathVariable String name, @PathVariable String code) throws Exception {
+        SysUser user = new SysUser();
+        user.setCode(code);
+        user.setName(name);
+        return user;
+    }
+
+    @RequestMapping(value = {"/method4/{name}/{code}"}, method = {RequestMethod.GET,
+            RequestMethod.POST})
+    @ResponseBody
+    public SysUser method4(
+            @RequestHeader(value = "User-Agent", required = false, defaultValue = "zzz") String userAgent, @PathVariable String name, @PathVariable String code) throws Exception {
+        SysUser user = new SysUser();
+        user.setCode(code);
+        user.setName(name);
+        user.setSex(userAgent);
+        return user;
+    }
+
+    @RequestMapping(value = {"/method5"}, method = {RequestMethod.GET,
+            RequestMethod.POST})
+    @ResponseBody
+    public SysUser method5(@CookieValue("JSESSIONID") String value) throws Exception {
+        SysUser user = new SysUser();
+        user.setCode(value);
+        return user;
     }
 }

@@ -14,6 +14,6 @@ public class Test4 extends BaseController {
     @RequestMapping(value = "/method1", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public SysUser method1(@RequestBody SysUser user) {
-        return user;
+        return user;//96
     }
 }

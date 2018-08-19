@@ -7,4 +7,8 @@ public class LogUtil {
 	public static void logJson(Object object) {
 		System.out.println(JsonUtil.toJson(object));
 	}
+
+	public static void log(Object object) {
+		System.out.println(object.toString());
+	}
 }
